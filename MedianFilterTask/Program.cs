@@ -6,14 +6,14 @@ namespace MedianFilterTask
 {
     public class Program
     {
-        private static readonly string _filePath = Path.Combine(Environment.CurrentDirectory + "\\Data", "data.txt");
+        private static readonly string fileName = "data.txt";
+        private static readonly string _filePath = Path.Combine(Environment.CurrentDirectory + "\\Data", fileName);
         public static void Main(string[] args)
         {
             try
             {
                 var data = DataFileParser.TryGetData(_filePath);
-                var dataHandler = new DataHandler();
-                var results = dataHandler.GetResults(data);
+                var results = DataHandler.GetResults(data);
 
                 foreach (var result in results)
                 {

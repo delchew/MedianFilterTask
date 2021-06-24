@@ -4,9 +4,9 @@ using System.Linq;
 
 namespace CalculationsCommon
 {
-    public class DataHandler
+    public static class DataHandler
     {
-        private Dictionary<int, Func<DataSetType, int>> _handlersStorage = new Dictionary<int, Func<DataSetType, int>>
+        private static Dictionary<int, Func<DataSetType, int>> _handlersStorage = new Dictionary<int, Func<DataSetType, int>>
         {
             { 1, (dataSet) => dataSet.Data.Sum() % 255 },
             { 2, (dataSet) => dataSet.Data.Aggregate((x, y) => x * y % 255) },
@@ -14,7 +14,7 @@ namespace CalculationsCommon
             { 4, (dataSet) => dataSet.Data.Min() }
         };
 
-        public IEnumerable<int> GetResults(IEnumerable<DataSetType> dataSetTypes)
+        public static IEnumerable<int> GetResults(IEnumerable<DataSetType> dataSetTypes)
         {
             var results = new List<int>();
             foreach(var datasetType in dataSetTypes)
