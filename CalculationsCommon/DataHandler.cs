@@ -17,9 +17,9 @@ namespace CalculationsCommon
         public static IEnumerable<int> GetResults(IEnumerable<DataSetType> dataSetTypes)
         {
             var results = new List<int>();
-            foreach(var datasetType in dataSetTypes)
+            foreach(var dataSetType in dataSetTypes)
             {
-                results.Add(_handlersStorage[datasetType.TypeId](datasetType));
+                results.Add(_handlersStorage[dataSetType.TypeId](dataSetType));
             }
             return results;
         }
