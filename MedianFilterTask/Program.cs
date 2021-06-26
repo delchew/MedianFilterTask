@@ -13,30 +13,36 @@ namespace MedianFilterTask
         {
             try
             {
+                //get data from file
                 var data = DataFileParser.TryGetData(_filePath);
+
+                //calculate results fo each data set
                 var results = DataHandler.GetResults(data).ToArray();
 
+                //print results
                 Console.WriteLine("Sequense of calculated results:");
                 foreach (var result in results)
                 {
                     Console.Write($"{result} ");
                 }
-                Console.WriteLine();
+                Console.WriteLine("\n");
 
                 Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("for window width equal to");
+                Console.WriteLine("Filtered results for window width equal to");
+
                 for (int i = 3; i <= 10000001; i += 2)
                 {
+                    //print filtered results
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.Write($"{i}: ");
-
-                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.ResetColor();
                     var filteredResults = MedianFilter.ApplyFilter(results, i);
+
                     foreach (var result in filteredResults)
                     {
                         Console.Write($"{result} ");
                     }
-                    Console.WriteLine();
+                    Console.WriteLine("\n");
                 }
             }
             catch (FileNotFoundException ex)
@@ -51,6 +57,7 @@ namespace MedianFilterTask
             {
                 Console.WriteLine(ex.Message);
             }
+
             Console.ReadKey();
         }
     }

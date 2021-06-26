@@ -17,7 +17,7 @@ namespace CalculationsCommon
             }
             if (windowWidth > numCollection.Length)
             {
-                throw new ArgumentException("Window width for median fileter can't exceed sequence elements quantity!");
+                throw new ArgumentException("Window width of median filter can't exceed sequence elements quantity!");
             }
             var middleItemIndex = windowWidth / 2;
             for (int i = 0; i < numCollection.Length - windowWidth; i++)
